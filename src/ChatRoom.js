@@ -29,15 +29,16 @@ function ChatRoom(userInfo) {
 
   return (
     <div className="chatRoom">
-      <h3>User Email: {currentUser.email}</h3>
       <div className="messagesContainer">
         {messages && messages.reverse().map(msg => <ChatMessage userName={msg.user} chatImg={msg.photoURL} messageText={msg.text} />)}
         <span ref={dummy}></span>
       </div>
-      <form>
-        <input value={formValue} onChange={(e) => setFormValue(e.target.value)} type="text"/>
-        <button disabled={!formValue} onClick={sendMessage}>Send</button>
-      </form>
+      <div className="formContainer">
+        <form>
+          <input className="inputBar" value={formValue} onChange={(e) => setFormValue(e.target.value)} type="text"/>
+          <button className="sendButton" disabled={!formValue} onClick={sendMessage}>Send</button>
+        </form>
+      </div>
     </div>
   );
 }

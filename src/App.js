@@ -5,13 +5,13 @@ import 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 firebase.initializeApp({
-  apiKey: "AIzaSyBSjsp5Lf1iNdIzqabsPwvXD9h2iduiTao",
-  authDomain: "hackathon-f9508.firebaseapp.com",
-  databaseURL: "https://hackathon-f9508.firebaseio.com",
-  projectId: "hackathon-f9508",
-  storageBucket: "hackathon-f9508.appspot.com",
-  messagingSenderId: "904109010127",
-  appId: "1:904109010127:web:574a246f36bcbc505c9bba"
+  apiKey: `${process.env.REACT_APP_apiKey}`,
+  authDomain: `${process.env.REACT_APP_authDomain}`,
+  databaseURL: `${process.env.REACT_APP_databaseURL}`,
+  projectId: `${process.env.REACT_APP_projectId}`,
+  storageBucket: `${process.env.REACT_APP_torageBucket}`,
+  messagingSenderId: `${process.env.REACT_APP_messagingSenderId}`,
+  appId: `${process.env.REACT_APP_appId}`
 })
 
 const auth = firebase.auth();
@@ -22,7 +22,8 @@ function App() {
 
   return (
     <div className="App">
-      <header>
+      <header className="header">
+        <h2>BTHS School Chat</h2>
         <SignOut />
       </header>
 
@@ -39,15 +40,17 @@ function App() {
 function SignIn() {
 
   const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
+    const GoogleProvider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(GoogleProvider);
   }
 
   return (
-    <>
-      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
-      <p>Do not violate the community guidelines or you will be banned for life!</p>
-    </>
+    <div className="socialLogin">
+      <button type="button" onClick={signInWithGoogle} className="sign-in google">
+        <img width="27" height="27" src="https://ai.devoteam.com/wp-content/uploads/sites/91/2018/05/google-logo-icon-png-transparent-background.png" alt="G"/>
+        <p>Sign in with Google</p>
+      </button>
+    </div>
   )
 
 }
