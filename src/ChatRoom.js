@@ -13,6 +13,7 @@ function ChatRoom(userInfo) {
   const [messages] = useCollectionData(query, { idField: 'id' });
 
   const sendMessage = async (e) => {
+    console.log(currentUser)
     e.preventDefault();
     await messagesRef.add({
       text: formValue,
@@ -27,10 +28,14 @@ function ChatRoom(userInfo) {
     dummy.current.scrollIntoView({ behavior: 'smooth' });
   }
 
+  function deleteMessage(msg) {
+    messagesRef.doc(msg.id).delete();
+  }
+
   return (
     <div className="chatRoom">
       <div className="messagesContainer">
-        {messages && messages.reverse().map(msg => <ChatMessage userName={msg.user} chatImg={msg.photoURL} messageText={msg.text} />)}
+        {messages && messages.reverse().map(msg => <ChatMessage currentUser={currentUser} deleteMessage={() => deleteMessage(msg)} userName={msg.user} chatImg={msg.photoURL} messageText={msg.text} />)}
         <span ref={dummy}></span>
       </div>
       <div className="formContainer">

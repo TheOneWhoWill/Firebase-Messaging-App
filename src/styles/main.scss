@@ -59,7 +59,18 @@
 
 .Message {
   display: flex;
+  justify-content: space-between;
   width: 100%;
+  .leftMessage {
+    display: flex;
+  }
+  .deleteMessage {
+    color: white;
+    font-size: 28px;
+    background: none;
+    outline: none;
+    border: none;
+  }
   .userName {
     font-size: 11px;
     color: rgb(201, 201, 201);

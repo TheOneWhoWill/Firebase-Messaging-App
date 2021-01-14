@@ -2,17 +2,9 @@ import React from 'react';
 import ChatRoom from './ChatRoom';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import './firebase.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-firebase.initializeApp({
-  apiKey: `${process.env.REACT_APP_apiKey}`,
-  authDomain: `${process.env.REACT_APP_authDomain}`,
-  databaseURL: `${process.env.REACT_APP_databaseURL}`,
-  projectId: `${process.env.REACT_APP_projectId}`,
-  storageBucket: `${process.env.REACT_APP_torageBucket}`,
-  messagingSenderId: `${process.env.REACT_APP_messagingSenderId}`,
-  appId: `${process.env.REACT_APP_appId}`
-})
 
 const auth = firebase.auth();
 
