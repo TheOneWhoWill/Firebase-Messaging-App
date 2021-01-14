@@ -28,7 +28,7 @@ function ChatMessage(props) {
             });
     }
     return (
-        <div className="Message" onClick={edit}>
+        <div className="Message">
             <div className="leftMessage">
                 <img
                     className="chatProfileImage"
@@ -40,6 +40,9 @@ function ChatMessage(props) {
                     {props.messageText}
                 </div>
             </div>
+            <button className="editMessage" onClick={edit}>
+                <b> &lt; &gt;</b>
+            </button>
             <button className="deleteMessage" onClick={props.deleteMessage}>
                 ✖
             </button>
