@@ -17,7 +17,9 @@ function ChatMessage(props) {
             .then(function (doc) {
                 if (doc.exists) {
                     const saved = doc.data();
-                    saved.text = newVal;
+                    if (newVal != null) {
+                        saved.text = newVal;
+                    }
                     DocRef.set(saved);
                 } else {
                     console.log("No such document!");
