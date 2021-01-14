@@ -51,6 +51,9 @@
   flex-direction: column;
 }
 
+.messagesContainer::-webkit-scrollbar {width: 1vh}
+.messagesContainer::-webkit-scrollbar-thumb {background-color: rgb(29, 29, 29);border-radius: 1vh;}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -64,10 +67,11 @@
   .leftMessage {
     display: flex;
   }
-  .deleteMessage {
+  .messageOptions {
     color: white;
     font-size: 28px;
     background: none;
+    margin-left: 19px;
     outline: none;
     border: none;
   }
