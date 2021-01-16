@@ -27,6 +27,14 @@ function ChatRoom(userInfo) {
       setFormValue("");
       dummy.current.scrollIntoView({ behavior: "smooth" });
   };
+  
+  function edit(msg) {
+    const newVal = prompt("What would you like to change this message to?", msg.text);
+
+    const DocRef = firebase.firestore().collection("messages").doc(msg.id);
+
+    DocRef.get().then(function (doc) {if (doc.exists) {const saved = doc.data();if (newVal != null) {saved.text = newVal;}DocRef.set(saved);} else {console.log("No such document!");}}).catch(function (error) {console.log("Error getting document:", error);});
+  }
 
   function deleteMessage(msg) {
     messagesRef.doc(msg.id).delete();
@@ -39,6 +47,7 @@ function ChatRoom(userInfo) {
           <ChatMessage
             currentUser={currentUser}
             deleteMessage={() => deleteMessage(msg)}
+            editMessage={() => edit(msg)}
             userName={msg.user}
             chatImg={msg.photoURL}
             messageText={msg.text}

@@ -1,30 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#root, html {
-  background-color: rgb(34, 82, 158);
-  height: 100%;
-}
-
-.socialLogin {
-  display: flex;
-  justify-content: center;
-}
-
-.github {
-  color: #FFFF;
-  background: #25282d;
-}
-
-.google {
-  color: #737373;
-  background: #FFFF;
-}
+* {margin: 0;padding: 0;box-sizing: border-box;font-family: 'Roboto', sans-serif;}
+#root, html {background-color: rgb(15, 69, 156);height: 100%;}
+.socialLogin {display: flex;justify-content: center;}
+.google {color: #737373;background: #FFFF;}
 
 .sign-in {
   p {
@@ -45,7 +24,7 @@
 .messagesContainer {
   background: rgb(0, 140, 255);
   padding: 10px;
-  height: 80vh;
+  height: 83vh;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -57,7 +36,19 @@
 .header {
   display: flex;
   justify-content: space-between;
-  height: 10vh;
+  align-items: center;
+  border-bottom: 0.25vh solid white;
+  padding: 15px;
+  height: 7vh;
+}
+
+.header h2 {color: white;font-size: 2.2vh;font-weight: normal;}
+
+.sign-out {
+  background: none;
+  border: none;
+  font-size: 2.2vh;
+  color: white;
 }
 
 .Message {
