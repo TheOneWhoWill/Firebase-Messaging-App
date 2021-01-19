@@ -3,6 +3,8 @@ import ChatMessage from "./ChatMessage.js";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 function ChatRoom(userInfo) {
   const dummy = useRef();
@@ -13,7 +15,6 @@ function ChatRoom(userInfo) {
   const [messages] = useCollectionData(query, { idField: "id" });
 
   const sendMessage = async (e) => {
-    console.log(currentUser);
     e.preventDefault();
       await messagesRef.add({
         text: formValue,
@@ -30,9 +31,7 @@ function ChatRoom(userInfo) {
   
   function edit(msg) {
     const newVal = prompt("What would you like to change this message to?", msg.text);
-
-    const DocRef = firebase.firestore().collection("messages").doc(msg.id);
-
+    const DocRef = messagesRef.doc(msg.id);
     DocRef.get().then(function (doc) {if (doc.exists) {const saved = doc.data();if (newVal != null) {saved.text = newVal;}DocRef.set(saved);} else {console.log("No such document!");}}).catch(function (error) {console.log("Error getting document:", error);});
   }
 
@@ -58,7 +57,7 @@ function ChatRoom(userInfo) {
       <div className="formContainer">
         <form>
           <input className="inputBar" value={formValue} onChange={(e) => setFormValue(e.target.value)} type="text"/>
-          <button className="sendButton" disabled={!formValue} onClick={sendMessage}>Send</button>
+          <button className="sendButton" disabled={!formValue} onClick={sendMessage}><FontAwesomeIcon icon={faPaperPlane} /></button>
         </form>
       </div>
     </div>

@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 * {margin: 0;padding: 0;box-sizing: border-box;font-family: 'Roboto', sans-serif;}
-#root, html {background-color: rgb(15, 69, 156);height: 100%;}
+#root, html {user-select: none;background-color: rgb(15, 69, 156);height: 100%;}
 .socialLogin {display: flex;justify-content: center;}
 .google {color: #737373;background: #FFFF;}
 
@@ -21,35 +22,14 @@
   border: none;
 }
 
-.messagesContainer {
-  background: rgb(0, 140, 255);
-  padding: 10px;
-  height: 83vh;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-}
-
+.messagesContainer {background: rgb(0, 140, 255);padding: 10px;height: 83vh;overflow-y: scroll;display: flex;flex-direction: column;}
 .messagesContainer::-webkit-scrollbar {width: 1vh}
 .messagesContainer::-webkit-scrollbar-thumb {background-color: rgb(29, 29, 29);border-radius: 1vh;}
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 0.25vh solid white;
-  padding: 15px;
-  height: 7vh;
-}
-
+.header {display: flex;justify-content: space-between;align-items: center;border-bottom: 0.25vh solid white;padding: 15px;height: 7vh;}
 .header h2 {color: white;font-size: 2.2vh;font-weight: normal;}
 
-.sign-out {
-  background: none;
-  border: none;
-  font-size: 2.2vh;
-  color: white;
-}
+.sign-out {background: none;border: none;font-size: 2.2vh;color: white;}
 
 .Message {
   display: flex;
@@ -100,9 +80,26 @@
 }
 
 .sendButton {
-  width: 20vh;
+  width: 15vh;
+  border: none;
+  outline: none;
+  background-color: rgb(13, 86, 168);
+  color: rgb(0, 0, 0);
+  font-size: 45px;
+}
+
+.sendButton:enabled {
+  color: rgb(255, 255, 255);
+  background-color: rgb(56, 86, 255);
 }
 
 .inputBar {
   width: 100%;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 2.7vh;
+  font-weight: 300;
+  padding-left: 1.5vh;
+  background-color: rgb(80, 80, 80);
 }
