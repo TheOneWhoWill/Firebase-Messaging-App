@@ -31,31 +31,39 @@ function ChatRoom(userInfo) {
     };
 
     function edit(msg) {
-        const newVal = prompt(
-            "What would you like to change this message to?",
-            msg.text
-        );
-        const DocRef = messagesRef.doc(msg.id);
-        DocRef.get()
-            .then(function (doc) {
-                if (doc.exists) {
-                    const saved = doc.data();
-                    if (newVal != null) {
-                        saved.text = newVal;
+        const editer = currentUser.email;
+        if (editer === msg.user /*logic*/) {
+            const newVal = prompt(
+                "What would you like to change this message to?",
+                msg.text
+            );
+            const DocRef = messagesRef.doc(msg.id);
+            DocRef.get()
+                .then(function (doc) {
+                    if (doc.exists) {
+                        const saved = doc.data();
+                        if (newVal != null) {
+                            saved.text = newVal;
+                        }
+                        DocRef.set(saved);
+                    } else {
+                        console.log("No such document!");
                     }
-                    DocRef.set(saved);
-                } else {
-                    console.log("No such document!");
-                }
-            })
-            .catch(function (error) {
-                console.log("Error getting document:", error);
-            });
+                })
+                .catch(function (error) {
+                    console.log("Error getting document:", error);
+                });
+        }
     }
 
     function deleteMessage(msg) {
-        if (window.confirm("Are you sure you want to delete this message?")) {
-            messagesRef.doc(msg.id).delete();
+        const editer = currentUser.email;
+        if (editer === msg.user /*logic*/) {
+            if (
+                window.confirm("Are you sure you want to delete this message?")
+            ) {
+                messagesRef.doc(msg.id).delete();
+            }
         }
     }
 
