@@ -14,7 +14,7 @@ function Buttons(props) {
 }
 
 function ChatMessage(props) {
-    const auth = props.currentUser.email === props.userName;
+    const owner = props.currentUser.email === props.userName;
     return (
         <div className="Message">
             <div className="leftMessage">
@@ -29,7 +29,7 @@ function ChatMessage(props) {
                 </div>
             </div>
             <div>
-                {auth ? (
+                {owner ? (
                     <Buttons
                         deleteMessage={props.deleteMessage}
                         editMessage={props.editMessage}

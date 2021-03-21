@@ -21,6 +21,7 @@ function ChatRoom(userInfo) {
                 text: formValue,
                 user: currentUser.email,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                uid: currentUser.uid,
                 photoURL: currentUser.photoURL,
             })
             .catch(function (error) {

@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <header className="header">
-        <h2>BTHS School Chat</h2>
+        <h2>React Messaging App</h2>
         <SignOut />
       </header>
 
